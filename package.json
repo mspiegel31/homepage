@@ -10,6 +10,9 @@
     "telemetry": "next telemetry disable"
   },
   "dependencies": {
+    "@backstage/backend-defaults": "^0.4.1",
+    "@backstage/backend-plugin-api": "^0.7.0",
+    "@backstage/config": "^1.2.0",
     "@headlessui/react": "^1.7.18",
     "@kubernetes/client-node": "^0.17.1",
     "cal-parser": "^1.0.2",

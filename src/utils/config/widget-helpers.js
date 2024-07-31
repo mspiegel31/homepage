@@ -1,13 +1,19 @@
 import { promises as fs } from "fs";
 import path from "path";
-
 import yaml from "js-yaml";
 
 import checkAndCopyConfig, { CONF_DIR, substituteEnvironmentVars } from "utils/config/config";
+import { fetchConfig } from "utils/proxy/cached-file-fetcher";
+
+
 
 export async function widgetsFromConfig() {
+  // TODO: some sort of "read remote config" environment variable
+  if (true) {
+    const config = await fetchConfig("https://github.com/gethomepage/homepage/blob/main/src/skeleton/bookmarks.yaml");
+    console.log(config)
+  }
   checkAndCopyConfig("widgets.yaml");
-
   const widgetsYaml = path.join(CONF_DIR, "widgets.yaml");
   const rawFileContents = await fs.readFile(widgetsYaml, "utf8");
   const fileContents = substituteEnvironmentVars(rawFileContents);
